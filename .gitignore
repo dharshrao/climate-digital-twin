@@ -11,3 +11,8 @@ frontend/node_modules/
 
 # VS Code
 .vscode/
+node_modules/
+__pycache__/
+*.pyc
+*.db
+.env

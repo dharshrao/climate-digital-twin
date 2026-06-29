@@ -1,12 +1,29 @@
-function App() {
-  return (
-    <div>
-      <h1>Climate Digital Twin</h1>
-      <h2>BAH 2026 Project</h2>
+import { useState } from "react";
+import "./App.css";
+import Dashboard from "./components/Dashboard";
+import IndiaMap from "./components/IndiaMap";
 
-      <p>Main Module: Climate Digital Twin</p>
-      <p>Support Module: Cloud Removal</p>
-      <p>Support Module: AQI Prediction</p>
+function App() {
+  const [selectedState, setSelectedState] = useState("Karnataka");
+
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>🌍 Climate Digital Twin</h1>
+      </header>
+
+      <div className="container">
+        <div className="map-section">
+          <IndiaMap
+            selectedState={selectedState}
+            setSelectedState={setSelectedState}
+          />
+        </div>
+
+        <div className="dashboard-section">
+          <Dashboard selectedState={selectedState} />
+        </div>
+      </div>
     </div>
   );
 }

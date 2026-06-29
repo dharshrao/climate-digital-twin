@@ -1,0 +1,72 @@
+[
+  {
+    "state": "Andhra Pradesh",
+    "temperature": 34,
+    "humidity": 68,
+    "rainfall": 120,
+    "aqi": 82
+  },
+  {
+    "state": "Karnataka",
+    "temperature": 29,
+    "humidity": 72,
+    "rainfall": 95,
+    "aqi": 58
+  },
+  {
+    "state": "Tamil Nadu",
+    "temperature": 36,
+    "humidity": 63,
+    "rainfall": 70,
+    "aqi": 91
+  },
+  {
+    "state": "Maharashtra",
+    "temperature": 31,
+    "humidity": 70,
+    "rainfall": 140,
+    "aqi": 102
+  },
+  {
+    "state": "Telangana",
+    "temperature": 35,
+    "humidity": 55,
+    "rainfall": 80,
+    "aqi": 88
+  },
+  {
+    "state": "Delhi",
+    "temperature": 39,
+    "humidity": 42,
+    "rainfall": 18,
+    "aqi": 175
+  },
+  {
+    "state": "Gujarat",
+    "temperature": 38,
+    "humidity": 48,
+    "rainfall": 35,
+    "aqi": 96
+  },
+  {
+    "state": "Rajasthan",
+    "temperature": 41,
+    "humidity": 28,
+    "rainfall": 12,
+    "aqi": 118
+  },
+  {
+    "state": "Uttar Pradesh",
+    "temperature": 37,
+    "humidity": 58,
+    "rainfall": 65,
+    "aqi": 142
+  },
+  {
+    "state": "Kerala",
+    "temperature": 30,
+    "humidity": 86,
+    "rainfall": 210,
+    "aqi": 42
+  }
+]
