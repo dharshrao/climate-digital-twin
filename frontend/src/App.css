@@ -1,51 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #08111f;
-  font-family: "Segoe UI", sans-serif;
-  color: white;
-}
-
-.app {
-  min-height: 100vh;
-}
-
-.header {
-  background: #102341;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #00d4ff;
-}
-
-.header h1 {
-  font-size: 38px;
-}
-
 .container {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 60% 40%;
   gap: 20px;
   padding: 20px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 100px);
 }
 
-.map-section,
+.map-section {
+  background: #1b315d;
+  border-radius: 20px;
+  padding: 15px;
+  overflow: hidden;
+}
+
 .dashboard-section {
-  background: #13284b;
-  border-radius: 18px;
+  background: #1b315d;
+  border-radius: 20px;
   padding: 20px;
   overflow-y: auto;
-}
-
-.dashboard-section::-webkit-scrollbar {
-  width: 6px;
-}
-
-.dashboard-section::-webkit-scrollbar-thumb {
-  background: #00d4ff;
-  border-radius: 10px;
 }

@@ -1,48 +1,83 @@
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
 function IndiaMap({ selectedState, setSelectedState }) {
-  const states = [
-    "Karnataka",
-    "Telangana",
-    "Tamil Nadu",
-    "Kerala",
-    "Maharashtra",
-    "Andhra Pradesh",
-    "Delhi",
-    "Gujarat",
-    "Rajasthan",
-    "Uttar Pradesh"
-  ];
+  const [geoData, setGeoData] = useState(null);
+
+  useEffect(() => {
+    fetch("/india_state.geojson")
+      .then((res) => res.json())
+      .then((data) => setGeoData(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const style = (feature) => {
+    const isSelected = feature.properties.NAME_1 === selectedState;
+
+    return {
+      fillColor: isSelected ? "#00E5FF" : "#355C9A",
+      color: "#FFFFFF",
+      weight: isSelected ? 3 : 1,
+      fillOpacity: isSelected ? 1 : 0.75,
+    };
+  };
+
+  const onEachFeature = (feature, layer) => {
+    layer.on({
+      click: () => {
+        if (feature.properties.NAME_1) {
+          setSelectedState(feature.properties.NAME_1);
+        }
+      },
+
+      mouseover: (e) => {
+        e.target.setStyle({
+          weight: 3,
+          fillOpacity: 1,
+        });
+      },
+
+      mouseout: (e) => {
+        e.target.setStyle(style(feature));
+      },
+    });
+
+    layer.bindTooltip(feature.properties.NAME_1);
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Select a State</h2>
+    <MapContainer
+      center={[22.5, 79]}
+      zoom={5}
+      minZoom={4.8}
+      maxZoom={7}
+      zoomControl={false}
+      scrollWheelZoom={true}
+      maxBounds={[
+        [5, 67],
+        [38, 98],
+      ]}
+      maxBoundsViscosity={1.0}
+      style={{
+        width: "100%",
+        height: "100%",
+        borderRadius: "18px",
+      }}
+    >
+      <TileLayer
+        attribution="© OpenStreetMap"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
-      <select
-        value={selectedState}
-        onChange={(e) => setSelectedState(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "10px",
-          fontSize: "18px",
-          marginTop: "20px",
-        }}
-      >
-        {states.map((state) => (
-          <option key={state} value={state}>
-            {state}
-          </option>
-        ))}
-      </select>
-
-      <div
-        style={{
-          marginTop: "40px",
-          textAlign: "center",
-          fontSize: "120px",
-        }}
-      >
-        🇮🇳
-      </div>
-    </div>
+      {geoData && (
+        <GeoJSON
+          data={geoData}
+          style={style}
+          onEachFeature={onEachFeature}
+        />
+      )}
+    </MapContainer>
   );
 }
 

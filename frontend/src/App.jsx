@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+
 import Dashboard from "./components/Dashboard";
 import IndiaMap from "./components/IndiaMap";
-
 function App() {
   const [selectedState, setSelectedState] = useState("Karnataka");
 
